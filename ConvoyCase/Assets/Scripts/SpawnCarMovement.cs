@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class SpawnCarMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float speed = 0;
 
-    // Update is called once per frame
-    void Update()
+    public bool canMove = true;
+
+    private void FixedUpdate()
     {
-        
+        if (canMove)
+        {
+            transform.Translate(Vector3.forward * speed * Time.fixedDeltaTime);
+        }
     }
 }

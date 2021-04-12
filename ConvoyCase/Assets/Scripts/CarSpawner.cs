@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CarSpawner : MonoBehaviour
 {//is compenent with child of convoy
-
-    SpawnCarMovement spawnCarMovement = default;
-
+    [HideInInspector]
     public bool spawnCar=true;
 
     float[] xSpawnPositions = new float[6];
     
+    public float spawnCarSpeed = 0;
+
     [SerializeField]
     GameObject[] cars;//I will give manually
 
@@ -72,16 +72,18 @@ public class CarSpawner : MonoBehaviour
         timeBetweenCreate = Random.Range(timeBetweenCreateMax, timeBetweenCreateMin);
     }
 
-    void SpawnCar()
+    void SpawnCarAndAddComponent()
     {
         GameObject car = Instantiate(carWillCreate, spawnPoint, Quaternion.LookRotation(Vector3.back));
 
-        AddCompanentTheCarAndDirection(car);
+        SpawnCarConfigure(car);
     }
 
-    void AddCompanentTheCarAndDirection(GameObject car)
+    void SpawnCarConfigure(GameObject car)
     {
-        car.AddComponent<SpawnCarMovement>();
+       car.AddComponent<SpawnCarMovement>();
+
+       car.GetComponent<SpawnCarMovement>().speed = spawnCarSpeed;
     }
 
     IEnumerator CarWave()
@@ -92,7 +94,7 @@ public class CarSpawner : MonoBehaviour
             for (int i = 0; i < howManyCar; i++)
             {
                 ChooseRandomsCarAndPos();
-                SpawnCar();
+                SpawnCarAndAddComponent();
                 yield return new WaitForSeconds(timeBetweenWave);
             }
             yield return new WaitForSeconds(timeBetweenCreate);
