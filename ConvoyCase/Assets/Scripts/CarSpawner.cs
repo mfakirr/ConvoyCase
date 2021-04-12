@@ -14,6 +14,8 @@ public class CarSpawner : MonoBehaviour
     [SerializeField]
     GameObject[] cars;//I will give manually
 
+    int carDirectionCheck = 0;
+
     #region rondomResults
     Vector3 spawnPoint = Vector3.zero;
 
@@ -58,11 +60,22 @@ public class CarSpawner : MonoBehaviour
         int whereSpawnPoint        = Random.Range(0, xSpawnPositions.Length);
         int randomDistanceCarPoint = Random.Range(distanceSpawnCarMax, distanceSpawnCarMin);
 
+        whereSpawnPoint =  CheckForSameDirections(whereSpawnPoint);
+
         spawnPoint = new Vector3(xSpawnPositions[whereSpawnPoint],
                                  transform.position.y,
                                  transform.position.z + randomDistanceCarPoint);
 
         timeBetweenWave = Random.Range(timeBetweenWaveMax, timeBetweenCreateMin);//time between create car
+    }
+
+    int CheckForSameDirections(int point)
+    {
+        while (point == carDirectionCheck)
+        {
+            point = Random.Range(0, xSpawnPositions.Length);
+        }
+        return point;
     }
 
     void ChooseRandomsTimeAndNumber()

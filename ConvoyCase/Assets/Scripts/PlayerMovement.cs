@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    float chancingX = 0;
+    float changingX = 0;
     [SerializeField]
     float slideSensitivity = 50;
     [SerializeField]
@@ -12,21 +12,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 30;
 
-        chancingX = transform.position.x;
+        changingX = transform.position.x;
     }
 
     void Update()
     {
-        chancingX = Mathf.Clamp(transform.position.x, XBoundryMin, XBoundryMax);
         if (Input.GetMouseButton(0))
         {
-            chancingX = Input.GetAxis("Mouse X") * Time.fixedDeltaTime * slideSensitivity;
+            changingX += Input.GetAxis("Mouse X") * Time.fixedDeltaTime * slideSensitivity;
 
-            transform.position = new Vector3(transform.position.x + chancingX,
-                                             transform.position.y, 
-                                             transform.position.z);
+            changingX = Mathf.Clamp(changingX, XBoundryMin, XBoundryMax);
+
+            transform.position = new Vector3( changingX,
+                                              transform.position.y, 
+                                              transform.position.z);
         }
         
     }
