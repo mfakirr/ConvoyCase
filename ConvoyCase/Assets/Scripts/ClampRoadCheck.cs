@@ -10,27 +10,27 @@ public class ClampRoadCheck : MonoBehaviour
     int myXPosition = 0;
     int myZPosition = 0;
 
+    PlayerMovement playerMovement;
+
     private void OnEnable()
     {
         myXPosition = Mathf.RoundToInt(transform.localPosition.x);
         myZPosition = Mathf.RoundToInt(transform.localPosition.z);
+
+        playerMovement = GetComponentInParent<PlayerMovement>();
     }
 
     private void OnDestroy()
     {
-        print("girdi");
         if (limoZPosition >= myZPosition)
         {
-            print("zpos");
             if (limoXPosition < myXPosition)
             {
-                print("xright");
-                GetComponentInParent<PlayerMovement>().RightCheck();
+                playerMovement.RightCheck();
             }
             else
-            { 
-                print("xleft");
-                GetComponentInParent<PlayerMovement>().LeftCheck();
+            {
+                playerMovement.LeftCheck();
             }
         }   
     }

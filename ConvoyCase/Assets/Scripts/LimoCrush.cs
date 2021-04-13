@@ -21,9 +21,11 @@ public class LimoCrush : MonoBehaviour
     {
         if (touch.CompareTag("EnemyCar") || touch.CompareTag("Bomb"))
         {
+            Destroy(touch.gameObject);
+
             health--;
 
-            Destroy(touch.gameObject);
+            gameManager.UIHealtControl(health);
 
             if (health == 0)
             {

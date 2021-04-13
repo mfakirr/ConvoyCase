@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,10 +22,17 @@ public class GameManager : MonoBehaviour
        
     }
 
+    [SerializeField]
+    Text UIHealtCounter = default;
+
     public void GameOver()
     {
         Time.timeScale = 0;
     }
 
+    public void UIHealtControl(int health)
+    {
+        UIHealtCounter.text = "" + health;
+    }
 
 }

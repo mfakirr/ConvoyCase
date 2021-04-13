@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CarSpawner : MonoBehaviour
 {//is compenent with child of convoy
+    PoolAbleObject poolAbleObject;
+
     [HideInInspector]
     public bool spawnCar=true;
 
@@ -49,6 +51,8 @@ public class CarSpawner : MonoBehaviour
 
     void Start()
     {
+        poolAbleObject = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PoolAbleObject>();
+
         #region xSpawnPoints
         //did it manually for spawner points
         xSpawnPositions[0] = 6.4f;
@@ -58,6 +62,17 @@ public class CarSpawner : MonoBehaviour
         xSpawnPositions[4] = 0;
         xSpawnPositions[5] = -1.6f;
         #endregion
+        
+        for (int i = 0; i < cars.Length; i++)
+        {
+            GameObject car = Instantiate(cars[i], spawnPoint, Quaternion.LookRotation(Vector3.back));
+
+            poolAbleObject.AddCarTheList(car);
+
+            car.SetActive(false);
+
+            SpawnCarConfigure(car);
+        }
 
         StartCoroutine(CarWave());
     }
@@ -87,9 +102,20 @@ public class CarSpawner : MonoBehaviour
 
     void SpawnCarAndAddComponent()
     {
-        GameObject car = Instantiate(carWillCreate, spawnPoint, Quaternion.LookRotation(Vector3.back));
+        GameObject car = null;
+        if (poolAbleObject.HaveCars())
+        {
+            car = poolAbleObject.ListRandomCar();
 
-        SpawnCarConfigure(car);
+            car.transform.position = spawnPoint;
+        }
+        else
+        {
+            car = Instantiate(carWillCreate, spawnPoint, Quaternion.LookRotation(Vector3.back));
+
+            SpawnCarConfigure(car);
+        }
+
     }
 
     void SpawnCarConfigure(GameObject car)
