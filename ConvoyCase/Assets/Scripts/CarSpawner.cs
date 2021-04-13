@@ -38,6 +38,15 @@ public class CarSpawner : MonoBehaviour
     int howManyCar = 0;
     #endregion
 
+    int CheckForSameDirections(int point)
+    {
+        while (point == carDirectionCheck)
+        {
+            point = Random.Range(0, xSpawnPositions.Length);
+        }
+        return point;
+    }
+
     void Start()
     {
         #region xSpawnPoints
@@ -69,15 +78,6 @@ public class CarSpawner : MonoBehaviour
         timeBetweenWave = Random.Range(timeBetweenWaveMax, timeBetweenCreateMin);//time between create car
     }
 
-    int CheckForSameDirections(int point)
-    {
-        while (point == carDirectionCheck)
-        {
-            point = Random.Range(0, xSpawnPositions.Length);
-        }
-        return point;
-    }
-
     void ChooseRandomsTimeAndNumber()
     {
         howManyCar = Random.Range(1, 4);
@@ -97,6 +97,12 @@ public class CarSpawner : MonoBehaviour
        car.AddComponent<SpawnCarMovement>();
 
        car.GetComponent<SpawnCarMovement>().speed = spawnCarSpeed;
+
+        int random = Random.Range(0, 2);
+        if (random == 1)
+        {
+            car.AddComponent<DropBomb>();
+        }
     }
 
     IEnumerator CarWave()

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EnemyCar
   - Bomb
+  - Limo
   layers:
   - Default
   - TransparentFX

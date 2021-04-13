@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     float XBoundryMax, XBoundryMin;
 
+    int leftSideCheck, rightSideCheck;
+
     private void Start()
     {
         Application.targetFrameRate = 30;
@@ -31,4 +33,24 @@ public class PlayerMovement : MonoBehaviour
         }
         
     }
+    #region BoundryChanges
+    public void LeftCheck()
+    {
+        leftSideCheck += 1;
+        if (leftSideCheck == 2)
+        {
+            XBoundryMin = -5.7f;
+            //Check it manually in scene
+        }
+    }
+
+    public void RightCheck()
+    {
+        rightSideCheck += 1;
+        if (rightSideCheck == 2)
+        {
+            XBoundryMax = 2.7f;
+        }
+    }
+    #endregion
 }
