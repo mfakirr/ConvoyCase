@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         leftSideCheck += 1;
         if (leftSideCheck == 2)
         {
-            XBoundryMin = -5.7f;
+            XBoundryMin = -5.8f;
             //Check it manually in scene
         }
     }

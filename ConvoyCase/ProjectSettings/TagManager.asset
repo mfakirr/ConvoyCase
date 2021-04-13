@@ -9,6 +9,7 @@ TagManager:
   - Limo
   - GameManage
   - GameManager
+  - CarSpawner
   layers:
   - Default
   - TransparentFX

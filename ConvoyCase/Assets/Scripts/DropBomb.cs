@@ -12,11 +12,13 @@ public class DropBomb : MonoBehaviour
 
     float step = 10;
 
-    void Start()
+    private void OnEnable()
     {
         bomb = GameObject.FindWithTag("Bomb");
 
         int random = Random.Range(0, 2);
+
+        GetComponent<SpawnCarMovement>().enabled = true;
 
         if (random == 0)
         {

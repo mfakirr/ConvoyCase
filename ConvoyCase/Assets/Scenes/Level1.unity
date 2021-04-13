@@ -9064,7 +9064,7 @@ GameObject:
   - component: {fileID: 546036534}
   m_Layer: 0
   m_Name: Spawners
-  m_TagString: Untagged
+  m_TagString: CarSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10659,7 +10659,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 632083962}
   m_LocalRotation: {x: 0.597765, y: -0.00010952704, z: 0.0001468883, w: 0.8016714}
-  m_LocalPosition: {x: 2.5699997, y: 10.95, z: 5.290001}
+  m_LocalPosition: {x: 2.5099998, y: 10.95, z: 5.290001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 563087791}
@@ -16071,7 +16071,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.597765, y: -0.00010952704, z: 0.0001468883, w: 0.8016714}
-  m_LocalPosition: {x: 2.5699997, y: 10.95, z: 5.290001}
+  m_LocalPosition: {x: 2.5099998, y: 10.95, z: 5.290001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 341071745}
@@ -23204,6 +23204,7 @@ GameObject:
   - component: {fileID: 1498643158}
   - component: {fileID: 1498643157}
   - component: {fileID: 1498643159}
+  - component: {fileID: 1498643160}
   m_Layer: 0
   m_Name: Convoy
   m_TagString: Untagged
@@ -23233,7 +23234,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1498643156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.61, y: -0.187, z: -6.24}
+  m_LocalPosition: {x: -1.67, y: -0.187, z: -6.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1147987338}
@@ -23262,6 +23263,20 @@ MonoBehaviour:
   slideSensitivity: 30
   XBoundryMax: 1.6
   XBoundryMin: -5
+--- !u!114 &1498643160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498643156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 441d3a1d1fecd8943b46ed2197bef2c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 0
+  carSpawner: {fileID: 546036532}
 --- !u!1001 &1498646405
 PrefabInstance:
   m_ObjectHideFlags: 0

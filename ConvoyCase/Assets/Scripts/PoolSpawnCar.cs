@@ -18,7 +18,7 @@ public class PoolSpawnCar : MonoBehaviour
 
     void PoolTheObject()
     {
-            poolAbleObject.AddCarTheList(gameObject);
+            poolAbleObject.AddCarTheList(this.gameObject);
     }
 
 }

@@ -106,7 +106,7 @@ public class CarSpawner : MonoBehaviour
         if (poolAbleObject.HaveCars())
         {
             car = poolAbleObject.ListRandomCar();
-
+            print("list");
             car.transform.position = spawnPoint;
         }
         else
@@ -120,9 +120,11 @@ public class CarSpawner : MonoBehaviour
 
     void SpawnCarConfigure(GameObject car)
     {
-       car.AddComponent<SpawnCarMovement>();
+        car.AddComponent<PoolSpawnCar>();
 
-       car.GetComponent<SpawnCarMovement>().speed = spawnCarSpeed;
+        car.AddComponent<SpawnCarMovement>();
+
+        car.GetComponent<SpawnCarMovement>().speed = spawnCarSpeed;
 
         int random = Random.Range(0, 2);
         if (random == 1)

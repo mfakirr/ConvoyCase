@@ -20,7 +20,7 @@ public class ClampRoadCheck : MonoBehaviour
         playerMovement = GetComponentInParent<PlayerMovement>();
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         if (limoZPosition >= myZPosition)
         {
@@ -32,6 +32,7 @@ public class ClampRoadCheck : MonoBehaviour
             {
                 playerMovement.LeftCheck();
             }
-        }   
+        }
     }
+
 }
